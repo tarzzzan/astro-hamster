@@ -64,14 +64,28 @@ const hasTags = Boolean(placeText || normalTagItems.length);
   ) : null}
 
   {firstImage ? (
-    <div class="bit-media">
-      <img
-        src={firstImage.src}
-        alt={firstImage.alt ?? ''}
-        width={firstImage.width}
-        height={firstImage.height}
-        loading="lazy"
-      />
+    <div class="bit-media bit-media--single">
+      <button
+        type="button"
+        class="bit-media-item bit-media-item--single"
+        data-bit-image-button
+        data-bit-image-index="0"
+        aria-label="查看图片预览"
+      >
+        <img
+          src={firstImage.src}
+          alt={firstImage.alt ?? ''}
+          width={firstImage.width}
+          height={firstImage.height}
+          loading="lazy"
+        />
+      </button>
+      <script
+        type="application/json"
+        data-bit-images
+        is:inline
+        set:html={JSON.stringify(imageItems)}
+      ></script>
     </div>
   ) : imageItems.length > 1 ? (
     <div class="bit-media bit-media--grid">

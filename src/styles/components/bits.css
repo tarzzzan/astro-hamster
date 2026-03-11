@@ -206,6 +206,10 @@
   overflow: visible;
 }
 
+.bit-media--single {
+  overflow: visible;
+}
+
 .bit-media-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -245,6 +249,15 @@
 .bit-media-item--wide {
   grid-column: 1 / -1;
   aspect-ratio: 21 / 9;
+}
+
+.bit-media-item--single {
+  aspect-ratio: auto;
+}
+
+.bit-media-item--single > img {
+  width: 100%;
+  height: auto;
 }
 
 .bit-media--grid .bit-media-item > img {

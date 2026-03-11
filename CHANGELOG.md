@@ -25,6 +25,8 @@ The format is based on Keep a Changelog, and this project aims to follow Semanti
 - 修复 `/admin/` 首次加载可能报错、开发环境下偶发无法保存配置的问题。
 - 修复字段改回原值后仍被判定为“未保存更改”的问题，以及部分浏览器下离页提醒失效的问题。
 - 修复隐藏侧栏分隔线后页面布局错位的问题，并改进保存失败时的错误提示与接口校验反馈。
+- 修复 `/archive/` 与 `/essay/` 列表搜索在子路径部署下可能重复拼接 Base URL，导致索引加载失败的问题。
+- 修复 `/bits/` 单图卡片无法打开图片预览的问题，单图与多图现在共用同一套 Lightbox 交互。
 
 ## [0.1.1] - 2026-02-07
 ### Added
