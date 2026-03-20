@@ -4,7 +4,7 @@ import TagFilterHeader from './TagFilterHeader.astro';
 import { createWithBase, getEssaySlug, type EssayEntry } from '../lib/content';
 import { getTagPath, type TagSummary } from '../lib/tags';
 import { getThemeSettings } from '../lib/theme-settings';
-import { formatISODate, formatMonthDay, groupByYear, joinPageSubtitleText } from '../utils/format';
+import { formatISODateUtc, formatMonthDayUtc, groupByUtcYear, joinPageSubtitleText } from '../utils/format';
 
 const {
   currentPage,
@@ -51,7 +51,7 @@ const pageDescription = joinPageSubtitleText(
   `共 ${resultCount} 篇内容`,
   totalPages > 1 ? `第 ${currentPage} / ${totalPages} 页` : null
 ) ?? `${pageTitleText}列表`;
-const groups = groupByYear(items, (entry) => entry.data.date);
+const groups = groupByUtcYear(items, (entry) => entry.data.date);
 const scopeRootPath = '/archive/';
 const fallbackListId = 'archive-tag-list';
 const tagOptions = tagSummaries.map((tagSummary) => ({
@@ -105,8 +105,8 @@ const currentTagState = currentTag
               </div>
               <div class="archive-meta">
                 <div class="archive-date">
-                  <span class="archive-date-md">{formatMonthDay(entry.data.date)}</span>
-                  <span class="archive-date-full">{formatISODate(entry.data.date)}</span>
+                  <span class="archive-date-md">{formatMonthDayUtc(entry.data.date)}</span>
+                  <span class="archive-date-full">{formatISODateUtc(entry.data.date)}</span>
                 </div>
                 {tag ? <div class="archive-tag">#{tag}</div> : null}
               </div>

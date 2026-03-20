@@ -33,6 +33,9 @@
 
 .entry-search {
   --entry-search-shift-y: 2px;
+  --entry-search-input-h: 26px;
+  --entry-search-feedback-gap: 6px;
+  --entry-search-feedback-h: 18px;
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -87,13 +90,13 @@
 .entry-search-panel {
   position: absolute;
   right: calc(100% + 8px);
-  top: calc(50% + var(--entry-search-shift-y));
+  top: calc(50% + var(--entry-search-shift-y) - (var(--entry-search-input-h) / 2));
   width: min(196px, 32vw);
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: var(--entry-search-feedback-gap);
   visibility: hidden;
-  transform: translate(8px, -50%);
+  transform: translate(8px, 0);
   pointer-events: none;
   transition: transform 0.2s ease, visibility 0s linear 0.2s;
   background: var(--bg);
@@ -102,11 +105,10 @@
 
 .entry-search-bridge {
   position: absolute;
-  top: calc(50% + var(--entry-search-shift-y));
+  top: calc(50% + var(--entry-search-shift-y) - (var(--entry-search-input-h) / 2));
   right: 100%;
   width: 12px;
-  height: 44px;
-  transform: translateY(-50%);
+  height: calc(var(--entry-search-input-h) + var(--entry-search-feedback-gap) + var(--entry-search-feedback-h));
   pointer-events: none;
 }
 
@@ -116,7 +118,7 @@
 
 .entry-search.is-open .entry-search-panel {
   visibility: visible;
-  transform: translate(0, -50%);
+  transform: translate(0, 0);
   pointer-events: auto;
   transition-delay: 0s;
 }
@@ -146,12 +148,23 @@
 
 .entry-search-feedback {
   margin: 0;
+  min-height: var(--entry-search-feedback-h);
   font-size: 12px;
   line-height: 1.45;
+  font-family: "LXGW WenKai Lite", "Kaiti SC", "STKaiti", serif;
   color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .entry-search-feedback[hidden] {
+  display: block;
+  visibility: hidden;
+}
+
+[data-entry-item][hidden],
+[data-entry-section][hidden] {
   display: none;
 }
 

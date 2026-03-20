@@ -1,5 +1,5 @@
 ---
-import { formatISODate } from '../utils/format';
+import { formatISODateUtc } from '../utils/format';
 import type { ArticleMetaSettings } from '../lib/theme-settings';
 
 const {
@@ -30,7 +30,7 @@ const shouldShowMetaLine = articleMetaSettings.showDate || (articleMetaSettings.
     <div class="meta-line meta-line--items">
       {articleMetaSettings.showDate ? (
         <span class="meta-line__item">
-          {articleMetaSettings.dateLabel ? `${articleMetaSettings.dateLabel}` : ''}{formatISODate(date)}
+          {articleMetaSettings.dateLabel ? `${articleMetaSettings.dateLabel}` : ''}{formatISODateUtc(date)}
         </span>
       ) : null}
       {articleMetaSettings.showTags && visibleTags.length ? (

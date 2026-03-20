@@ -44,6 +44,7 @@ if (!root) {
   const base = import.meta.env.BASE_URL ?? '/';
   const withBase = createWithBase(base);
   const indexUrl = indexUrlRaw ? withBase(indexUrlRaw) : '';
+  const shouldBypassIndexCache = import.meta.env.DEV;
 
   const items = Array.from(document.querySelectorAll<HTMLElement>('[data-entry-item]')).map((el) => ({
     el,
@@ -284,7 +285,9 @@ if (!root) {
 
     if (!indexPromise) {
       setStatus('正在加载索引...', { visible: false });
-      indexPromise = fetch(indexUrl)
+      indexPromise = fetch(indexUrl, {
+        cache: shouldBypassIndexCache ? 'no-store' : 'default'
+      })
         .then((response) => {
           if (!response.ok) throw new Error('index fetch failed');
           return response.json();

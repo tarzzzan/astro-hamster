@@ -6,9 +6,22 @@ export function formatISODate(d: Date): string {
   return `${yyyy}-${mm}-${dd}`;
 }
 
+export function formatISODateUtc(d: Date): string {
+  const yyyy = d.getUTCFullYear();
+  const mm = String(d.getUTCMonth() + 1).padStart(2, '0');
+  const dd = String(d.getUTCDate()).padStart(2, '0');
+  return `${yyyy}-${mm}-${dd}`;
+}
+
 export function formatMonthDay(d: Date): string {
   const mm = String(d.getMonth() + 1).padStart(2, '0');
   const dd = String(d.getDate()).padStart(2, '0');
+  return `${mm}/${dd}`;
+}
+
+export function formatMonthDayUtc(d: Date): string {
+  const mm = String(d.getUTCMonth() + 1).padStart(2, '0');
+  const dd = String(d.getUTCDate()).padStart(2, '0');
   return `${mm}/${dd}`;
 }
 
@@ -45,6 +58,23 @@ export function groupByYear<T>(items: T[], getDate: (item: T) => Date) {
   }
 
   // Return as array sorted by year desc.
+  return Array.from(map.entries())
+    .sort((a, b) => b[0] - a[0])
+    .map(([year, list]) => ({
+      year,
+      list: list.sort((a, b) => getDate(b).valueOf() - getDate(a).valueOf())
+    }));
+}
+
+export function groupByUtcYear<T>(items: T[], getDate: (item: T) => Date) {
+  const map = new Map<number, T[]>();
+  for (const it of items) {
+    const y = getDate(it).getUTCFullYear();
+    const arr = map.get(y) ?? [];
+    arr.push(it);
+    map.set(y, arr);
+  }
+
   return Array.from(map.entries())
     .sort((a, b) => b[0] - a[0])
     .map(([year, list]) => ({

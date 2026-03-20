@@ -5,7 +5,7 @@ import Lightbox from '../components/Lightbox.astro';
 import '../styles/article.css';
 import { getEssayDerivedText } from '../lib/content';
 import type { ArticleMetaSettings, SidebarNavId } from '../lib/theme-settings';
-import { formatISODate } from '../utils/format';
+import { formatISODateUtc } from '../utils/format';
 import { truncateText } from '../utils/excerpt';
 
 const {
@@ -80,7 +80,7 @@ const shouldShowMetaLine = articleMetaSettings.showDate
       <div class="meta-line meta-line--items">
         {articleMetaSettings.showDate ? (
           <span class="meta-line__item">
-            {articleMetaSettings.dateLabel ? `${articleMetaSettings.dateLabel}` : ''}{formatISODate(entry.data.date)}
+            {articleMetaSettings.dateLabel ? `${articleMetaSettings.dateLabel}` : ''}{formatISODateUtc(entry.data.date)}
           </span>
         ) : null}
         {articleMetaSettings.showTags && visibleTags.length ? (

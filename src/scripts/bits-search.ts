@@ -4,6 +4,7 @@ const form = document.querySelector<HTMLFormElement>('[data-bits-search-form]');
 const input = document.getElementById('bits-search') as HTMLInputElement | null;
 const btn = document.getElementById('bits-search-btn') as HTMLButtonElement | null;
 const statusEl = document.getElementById('bits-search-status') as HTMLDivElement | null;
+const liveEl = document.getElementById('bits-search-live') as HTMLParagraphElement | null;
 const browseRoot = document.querySelector<HTMLElement>('[data-bits-browse]');
 const resultsRoot = document.querySelector<HTMLElement>('[data-bits-search-results]');
 const resultsSummaryEl = document.querySelector<HTMLElement>('[data-bits-search-results-summary]');
@@ -208,19 +209,38 @@ const getDisplayTags = (tags: string[]) => {
   };
 };
 
-const setStatus = (text: string, options: { autoClearMs?: number } = {}) => {
-  clearStatusTimer();
+const setVisibleStatus = (text: string) => {
   if (!statusEl) return;
   if (statusEl.textContent !== text) {
     statusEl.textContent = text;
   }
+};
+
+const setLiveStatus = (text: string) => {
+  if (!liveEl) return;
+  if (liveEl.textContent !== text) {
+    liveEl.textContent = text;
+  }
+};
+
+const setStatus = (
+  text: string,
+  options: {
+    announce?: boolean;
+    autoClearMs?: number;
+    visible?: boolean;
+  } = {}
+) => {
+  clearStatusTimer();
+  const { announce = true, autoClearMs, visible = true } = options;
+  setVisibleStatus(visible ? text : '');
+  setLiveStatus(announce ? text : '');
   if (text && options.autoClearMs) {
     statusTimer = window.setTimeout(() => {
-      if (statusEl.textContent === text) {
-        statusEl.textContent = '';
-      }
+      setVisibleStatus('');
+      setLiveStatus('');
       statusTimer = null;
-    }, options.autoClearMs);
+    }, autoClearMs);
   }
 };
 
@@ -534,7 +554,7 @@ const loadIndex = async () => {
   if (indexCache) return indexCache;
   if (indexFailed) return null;
   if (!indexPromise) {
-    setStatus('正在加载索引...');
+    setStatus('正在加载索引...', { visible: false });
     indexPromise = fetch(indexUrl, {
       cache: shouldBypassIndexCache ? 'no-store' : 'default'
     })

@@ -195,7 +195,8 @@ const cards = await Promise.all(
         </button>
       </div>
     </div>
-    <div class="bits-status" id="bits-search-status" role="status" aria-live="polite"></div>
+    <div class="bits-status" id="bits-search-status"></div>
+    <p class="sr-only" id="bits-search-live" role="status" aria-live="polite" aria-atomic="true"></p>
     <div class="bits-draft-load-status" id="bits-draft-load-status" role="status" aria-live="polite"></div>
   </div>
 

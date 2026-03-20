@@ -16,11 +16,14 @@ export const GET: APIRoute = async () => {
       date: entry.data.date ? entry.data.date.toISOString() : null
     };
   });
+  const cacheControl = import.meta.env.DEV
+    ? 'no-store'
+    : 'public, max-age=3600, s-maxage=86400, stale-while-revalidate=86400';
 
   return new Response(JSON.stringify(index), {
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
-      'Cache-Control': 'public, max-age=3600, s-maxage=86400, stale-while-revalidate=86400'
+      'Cache-Control': cacheControl
     }
   });
 };
