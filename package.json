@@ -33,11 +33,11 @@
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.17",
-    "@astrojs/sitemap": "^3.7.0",
-    "astro": "^5.18.1"
+    "@astrojs/sitemap": "^3.7.1",
+    "astro": "^6.0.8"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.7",
+    "@astrojs/check": "^0.9.8",
     "@iconify-json/logos": "^1.2.0",
     "@iconify-json/simple-icons": "^1.2.0",
     "@types/node": "^22.0.0",
