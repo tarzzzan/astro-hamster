@@ -1,3 +1,21 @@
+# PagesCMS Configuration for Astro Hamster (astro-whono theme)
+# Integration with pagescms.org for content management
+# Generates UI at: pagescms.org dashboard
+
+cms:
+  # Enable PagesCMS integration
+  enabled: true
+  # GitHub repository configuration
+  repo: tarzzzan/astro-hamster
+  # Branch for content management
+  branch: main
+  # Content publishing workflow
+  publish:
+    # Commit message template
+    message: 'Update content via PagesCMS'
+    # Auto-publish on save (set to false for review workflow)
+    immediate: false
+
 media:
   input: src/assets
   output: src/assets
@@ -8,70 +26,101 @@ content:
     type: collection
     path: src/content/archive
     format: frontmatter
+    singular: Статья
     fields:
       - name: title
         label: Заголовок
         type: string
+        required: true
       - name: description
         label: Описание
         type: string
+        required: true
       - name: pubDate
-        label: Дата (ГГГГ-ММ-ДД)
+        label: Дата публикации (ГГГГ-ММ-ДД)
         type: date
+        required: true
       - name: draft
         label: Черновик
         type: boolean
+        default: false
       - name: body
-        label: Текст
+        label: Содержание
         type: rich-text
+        required: true
 
   - name: essay
     label: Эссе (Essay)
     type: collection
     path: src/content/essay
     format: frontmatter
+    singular: Эссе
     fields:
       - name: title
         label: Заголовок
         type: string
+        required: true
       - name: description
         label: Описание
         type: string
+        required: true
       - name: pubDate
-        label: Дата (ГГГГ-ММ-ДД)
+        label: Дата публикации (ГГГГ-ММ-ДД)
         type: date
+        required: true
       - name: body
-        label: Текст
+        label: Содержание
         type: rich-text
+        required: true
 
   - name: bits
     label: Короткие записи (Bits)
     type: collection
     path: src/content/bits
     format: frontmatter
+    singular: Запись
     fields:
       - name: title
         label: Заголовок
         type: string
+        required: true
       - name: pubDate
-        label: Дата (ГГГГ-ММ-ДД)
+        label: Дата публикации (ГГГГ-ММ-ДД)
         type: date
+        required: true
       - name: body
-        label: Текст
+        label: Содержание
         type: rich-text
+        required: true
 
   - name: memo
     label: Заметки (Memo)
     type: collection
     path: src/content/memo
     format: frontmatter
+    singular: Заметка
     fields:
       - name: title
         label: Заголовок
         type: string
+        required: true
       - name: pubDate
-        label: Дата (ГГГГ-ММ-ДД)
+        label: Дата публикации (ГГГГ-ММ-ДД)
         type: date
+        required: true
       - name: body
-        label: Текст
+        label: Содержание
         type: rich-text
+        required: true
+
+# Theme configuration reference
+theme:
+  name: astro-whono
+  version: ">=0.3.0"
+  repository: https://github.com/cxro/astro-whono
+
+# Build settings for PagesCMS preview
+build:
+  output: dist
+  command: npm run build
+  preview: npm run preview
