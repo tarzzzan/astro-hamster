@@ -1,6 +1,6 @@
 media:
   input: src/assets
-  output: ../../assets
+  output: src/assets
 
 content:
   - name: archive
@@ -16,13 +16,13 @@ content:
         label: Описание
         type: string
       - name: pubDate
-        label: Дата публикации
-        type: datetime
+        label: Дата (ГГГГ-ММ-ДД)
+        type: date
       - name: draft
-        label: Черновик (Не публиковать)
+        label: Черновик
         type: boolean
       - name: body
-        label: Текст статьи
+        label: Текст
         type: rich-text
 
   - name: essay
@@ -38,13 +38,10 @@ content:
         label: Описание
         type: string
       - name: pubDate
-        label: Дата публикации
-        type: datetime
-      - name: draft
-        label: Черновик
-        type: boolean
+        label: Дата (ГГГГ-ММ-ДД)
+        type: date
       - name: body
-        label: Текст эссе
+        label: Текст
         type: rich-text
 
   - name: bits
@@ -57,10 +54,10 @@ content:
         label: Заголовок
         type: string
       - name: pubDate
-        label: Дата публикации
-        type: datetime
+        label: Дата (ГГГГ-ММ-ДД)
+        type: date
       - name: body
-        label: Текст записи
+        label: Текст
         type: rich-text
 
   - name: memo
@@ -73,8 +70,8 @@ content:
         label: Заголовок
         type: string
       - name: pubDate
-        label: Дата публикации
-        type: datetime
+        label: Дата (ГГГГ-ММ-ДД)
+        type: date
       - name: body
-        label: Текст заметки
+        label: Текст
         type: rich-text
