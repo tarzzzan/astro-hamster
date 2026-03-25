@@ -18,7 +18,6 @@ content:
       - name: body
         label: Текст статьи
         type: rich-text
-
 media:
   input: src/assets
   output: /src/assets
