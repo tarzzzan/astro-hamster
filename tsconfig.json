@@ -2,7 +2,7 @@
   "extends": "astro/tsconfigs/strictest",
   "compilerOptions": {
     "types": ["astro/client"],
-    "baseUrl": "https://tarzzzan.ru",
+    "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
     }
