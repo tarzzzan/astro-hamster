@@ -1,0 +1,23 @@
+content:
+  - name: Posts (Archive)
+    label: Записи блога
+    type: collection
+    path: src/content/archive # Путь, где лежат ваши .md или .mdx файлы
+    format: json-frontmatter # Или просто frontmatter
+    fields:
+      - name: title
+        label: Заголовок
+        type: string
+      - name: pubDate
+        label: Дата публикации
+        type: date
+      - name: description
+        label: Описание
+        type: string
+      - name: body
+        label: Текст поста
+        type: rich-text
+
+media:
+  input: src/assets
+  output: /src/assets
