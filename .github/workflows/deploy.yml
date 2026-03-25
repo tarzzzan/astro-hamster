@@ -1,8 +1,10 @@
 name: Deploy to GitHub Pages
 
 on:
+  # Триггер при пуше в основную ветку
   push:
-    branches: [ main ] # или master, если у вас основная ветка так называется
+    branches: [main]
+  # Позволяет запускать деплой вручную из вкладки Actions
   workflow_dispatch:
 
 permissions:
@@ -10,11 +12,29 @@ permissions:
   pages: write
   id-token: write
 
+env:
+  # Этой строчки нет в доках, но она нужна вам, чтобы убрать ошибку Node.js 20
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout your repository using git
         uses: actions/checkout@v4
-      - name: Install, build, and upload with Astro
+      - name: Install, build, and upload your site
         uses: withastro/action@v3
+        # with:
+          # path: . # Директория проекта (если Astro не в корне)
+          # node-version: 24 # Можно явно указать 24 здесь
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
