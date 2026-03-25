@@ -1,0 +1,18 @@
+media:
+  input: src/assets
+  output: ../../assets
+content:
+  - name: archive
+    label: Статьи
+    type: collection
+    path: src/content/archive
+    fields:
+      - name: title
+        label: Заголовок
+        type: string
+      - name: pubDate
+        label: Дата публикации
+        type: datetime
+      - name: body
+        label: Текст
+        type: rich-text
