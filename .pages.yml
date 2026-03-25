@@ -1,11 +1,60 @@
 media:
   input: src/assets
   output: ../../assets
+
 content:
   - name: archive
-    label: Статьи
+    label: Статьи (Archive)
     type: collection
     path: src/content/archive
+    extension: mdx
+    format: frontmatter
+    fields:
+      - name: title
+        label: Заголовок
+        type: string
+      - name: description
+        label: Описание
+        type: string
+      - name: pubDate
+        label: Дата публикации
+        type: datetime
+      - name: draft
+        label: Черновик (Не публиковать)
+        type: boolean
+      - name: body
+        label: Текст статьи
+        type: rich-text
+
+  - name: essay
+    label: Эссе (Essay)
+    type: collection
+    path: src/content/essay
+    extension: mdx
+    format: frontmatter
+    fields:
+      - name: title
+        label: Заголовок
+        type: string
+      - name: description
+        label: Описание
+        type: string
+      - name: pubDate
+        label: Дата публикации
+        type: datetime
+      - name: draft
+        label: Черновик
+        type: boolean
+      - name: body
+        label: Текст эссе
+        type: rich-text
+
+  - name: bits
+    label: Короткие записи (Bits)
+    type: collection
+    path: src/content/bits
+    extension: mdx
+    format: frontmatter
     fields:
       - name: title
         label: Заголовок
@@ -14,5 +63,22 @@ content:
         label: Дата публикации
         type: datetime
       - name: body
-        label: Текст
+        label: Текст записи
+        type: rich-text
+
+  - name: memo
+    label: Заметки (Memo)
+    type: collection
+    path: src/content/memo
+    extension: mdx
+    format: frontmatter
+    fields:
+      - name: title
+        label: Заголовок
+        type: string
+      - name: pubDate
+        label: Дата публикации
+        type: datetime
+      - name: body
+        label: Текст заметки
         type: rich-text
