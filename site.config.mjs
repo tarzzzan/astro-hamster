@@ -1,6 +1,6 @@
 const rawSiteUrl = (process.env.SITE_URL ?? '').trim();
-const siteUrl = rawSiteUrl ? rawSiteUrl.replace(/\/+$/, '') : '';
-const hasSiteUrl = siteUrl.length > 0;
+const siteUrl = 'https://tarzzzan.ru';
+const hasSiteUrl = true;
 const fallbackSiteUrl = 'https://example.invalid';
 
 if (!hasSiteUrl && process.env.NODE_ENV === 'production') {
