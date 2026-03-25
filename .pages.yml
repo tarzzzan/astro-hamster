@@ -1,54 +1,19 @@
-# PagesCMS Configuration for Astro Hamster (astro-whono theme)
-# Integration with pagescms.org for content management
-# Generates UI at: pagescms.org dashboard
+# PagesCMS Configuration for Astro Hamster (@cxro/astro-whono)
+# Synced with src/content.config.ts schema
 
 cms:
-  # Enable PagesCMS integration
   enabled: true
-  # GitHub repository configuration
   repo: tarzzzan/astro-hamster
-  # Branch for content management
   branch: main
-  # Content publishing workflow
   publish:
-    # Commit message template
     message: 'Update content via PagesCMS'
-    # Auto-publish on save (set to false for review workflow)
-    immediate: false
+    immediate: true
 
 media:
   input: src/assets
   output: src/assets
 
 content:
-  - name: archive
-    label: Статьи (Archive)
-    type: collection
-    path: src/content/archive
-    format: frontmatter
-    singular: Статья
-    fields:
-      - name: title
-        label: Заголовок
-        type: string
-        required: true
-      - name: description
-        label: Описание
-        type: string
-        required: true
-      - name: pubDate
-        label: Дата публикации (ГГГГ-ММ-ДД)
-        type: date
-        required: true
-      - name: draft
-        label: Черновик
-        type: boolean
-        default: false
-      - name: body
-        label: Содержание
-        type: rich-text
-        required: true
-
   - name: essay
     label: Эссе (Essay)
     type: collection
@@ -63,11 +28,36 @@ content:
       - name: description
         label: Описание
         type: string
-        required: true
-      - name: pubDate
+        required: false
+      - name: date
         label: Дата публикации (ГГГГ-ММ-ДД)
         type: date
         required: true
+      - name: tags
+        label: Теги
+        type: array
+        required: false
+        items: string
+      - name: draft
+        label: Черновик
+        type: boolean
+        default: false
+      - name: archive
+        label: Архивировать
+        type: boolean
+        default: true
+      - name: cover
+        label: Обложка
+        type: string
+        required: false
+      - name: badge
+        label: Значок
+        type: string
+        required: false
+      - name: slug
+        label: URL (опционально)
+        type: string
+        required: false
       - name: body
         label: Содержание
         type: rich-text
@@ -81,13 +71,30 @@ content:
     singular: Запись
     fields:
       - name: title
-        label: Заголовок
+        label: Заголовок (опционально)
         type: string
-        required: true
-      - name: pubDate
+        required: false
+      - name: description
+        label: Описание (опционально)
+        type: string
+        required: false
+      - name: date
         label: Дата публикации (ГГГГ-ММ-ДД)
         type: date
         required: true
+      - name: tags
+        label: Теги
+        type: array
+        required: false
+        items: string
+      - name: draft
+        label: Черновик
+        type: boolean
+        default: false
+      - name: slug
+        label: URL (опционально)
+        type: string
+        required: false
       - name: body
         label: Содержание
         type: rich-text
@@ -104,23 +111,23 @@ content:
         label: Заголовок
         type: string
         required: true
-      - name: pubDate
-        label: Дата публикации (ГГГГ-ММ-ДД)
+      - name: subtitle
+        label: Подзаголовок (опционально)
+        type: string
+        required: false
+      - name: date
+        label: Дата (опционально)
         type: date
-        required: true
+        required: false
+      - name: draft
+        label: Черновик
+        type: boolean
+        default: false
+      - name: slug
+        label: URL (опционально)
+        type: string
+        required: false
       - name: body
         label: Содержание
         type: rich-text
         required: true
-
-# Theme configuration reference
-theme:
-  name: astro-whono
-  version: ">=0.3.0"
-  repository: https://github.com/cxro/astro-whono
-
-# Build settings for PagesCMS preview
-build:
-  output: dist
-  command: npm run build
-  preview: npm run preview
