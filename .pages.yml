@@ -1,9 +1,9 @@
-# PagesCMS Configuration for Astro Hamster (@cxro/astro-whono)
+# PagesCMS Configuration for Astro Whono Fork
 # Synced with src/content.config.ts schema
 
 cms:
   enabled: true
-  repo: tarzzzan/astro-hamster
+  repo: tarzzzan/astro-whono
   branch: main
   publish:
     message: 'Update content via PagesCMS'
@@ -46,10 +46,6 @@ content:
         label: Архивировать
         type: boolean
         default: true
-      - name: cover
-        label: Обложка
-        type: string
-        required: false
       - name: badge
         label: Значок
         type: string
@@ -70,14 +66,6 @@ content:
     format: frontmatter
     singular: Запись
     fields:
-      - name: title
-        label: Заголовок (опционально)
-        type: string
-        required: false
-      - name: description
-        label: Описание (опционально)
-        type: string
-        required: false
       - name: date
         label: Дата публикации (ГГГГ-ММ-ДД)
         type: date
@@ -91,10 +79,6 @@ content:
         label: Черновик
         type: boolean
         default: false
-      - name: slug
-        label: URL (опционально)
-        type: string
-        required: false
       - name: body
         label: Содержание
         type: rich-text
@@ -123,10 +107,6 @@ content:
         label: Черновик
         type: boolean
         default: false
-      - name: slug
-        label: URL (опционально)
-        type: string
-        required: false
       - name: body
         label: Содержание
         type: rich-text
