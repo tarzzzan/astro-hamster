@@ -6,12 +6,9 @@ title: Весёлый хомяк =]
 theme: hextra
 
 markup:
-  # allow raw html
   goldmark:
     renderer:
       unsafe: true
-
-  # enable hextra syntax highlight
   highlight:
     noClasses: true
 
@@ -24,32 +21,21 @@ menu:
       pageRef: /about
       weight: 2
     - name: Contact ↗
-      url: "https://github.com/imfing"
+      url: https://github.com/imfing
       weight: 3
     - name: Search
       weight: 4
       params:
         type: search
-    - name: GitHub
-      weight: 5
-      url: "https://github.com/imfing/hextra-starter-template"
-      params:
-        icon: github
-    - name: Twitter
-      weight: 6
-      url: "https://twitter.com/"
-      params:
-        icon: x-twitter
 
 params:
   navbar:
     displayTitle: true
     displayLogo: false
-
   footer:
     displayCopyright: false
     displayPoweredBy: false
-
   editURL:
     enable: false
-    base: "http://192.168.1.19:8080/proxy/1313/"
+    base: http://192.168.1.19:8080/proxy/1313/
+
