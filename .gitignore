@@ -3,5 +3,24 @@ public/
 resources/
 .hugo_build.lock
 
-# Editor
+.devcontainer
+.gitpod.yml
+
+go.mod
+go.sum
+
+# IDE
+.idea/
+*.swp
 .vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local overrides
+.env
+
+# Private deploy tooling (not for public repo)
+scripts/
+static/img/_inbox/

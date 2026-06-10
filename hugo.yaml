@@ -1,5 +1,6 @@
 # Hugo configuration file
-title: My Site
+baseURL: "https://tarzzzan.ru/"
+title: Весёлый хомяк =]
 
 # import hextra as module
 module:
@@ -14,7 +15,7 @@ markup:
 
   # enable hextra syntax highlight
   highlight:
-    noClasses: false
+    noClasses: true
 
 menu:
   main:
@@ -49,8 +50,8 @@ params:
 
   footer:
     displayCopyright: false
-    displayPoweredBy: true
+    displayPoweredBy: false
 
   editURL:
-    enable: true
-    base: "https://github.com/imfing/hextra-starter-template/edit/main/content"
+    enable: false
+    base: "http://192.168.1.19:8080/proxy/1313/"
