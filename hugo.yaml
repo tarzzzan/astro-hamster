@@ -1,6 +1,7 @@
 # Hugo configuration file
 baseURL: "https://tarzzzan.ru/"
 title: Весёлый хомяк =]
+languageCode: ru-RU
 
 # import hextra as module
 theme: hextra
@@ -26,6 +27,7 @@ menu:
         type: search
 
 params:
+  favicon: /img/favicon/favicon.ico
   navbar:
     displayTitle: true
     displayLogo: false
