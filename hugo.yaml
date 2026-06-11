@@ -2,6 +2,7 @@
 baseURL: "https://tarzzzan.ru/"
 title: Весёлый хомяк =]
 locale: ru
+defaultContentLanguage: ru
 
 # import hextra as module
 theme: hextra
