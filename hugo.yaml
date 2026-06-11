@@ -36,3 +36,10 @@ params:
     displayPoweredBy: false
   editURL:
     enable: false
+
+cascade:
+  - params:
+      noindex: true
+
+sitemap:
+  disable: true 
